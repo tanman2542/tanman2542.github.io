@@ -1,1 +1,18 @@
-if(!self.define){let e,i={};const n=(n,s)=>(n=new URL(n+".js",s).href,i[n]||new Promise(i=>{if("document"in self){const e=document.createElement("script");e.src=n,e.onload=i,document.head.appendChild(e)}else e=n,importScripts(n),i()}).then(()=>{let e=i[n];if(!e)throw new Error(`Module ${n} didn’t register its module`);return e}));self.define=(s,c)=>{const o=e||("document"in self?document.currentScript.src:"")||location.href;if(i[o])return;let r={};const d=e=>n(e,o),f={module:{uri:o},exports:r,require:d};i[o]=Promise.all(s.map(e=>f[e]||d(e))).then(e=>(c(...e),r))}}define(["./workbox-9c191d2f"],function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([{url:"registerSW.js",revision:"768a43ab98d62e1e3f794935ee7eee5e"},{url:"manifest.webmanifest",revision:"75104ae62fb06fd5033c216023f82e0f"},{url:"index.html",revision:"cba227fc6469821e9b5eaaafed02fc63"},{url:"favicon.png",revision:"65e6543982551f9805ba430588eb9926"},{url:"icons/maskable-512.png",revision:"6c2ca616dd6995628032334e355cedc0"},{url:"icons/icon-512.png",revision:"6c2ca616dd6995628032334e355cedc0"},{url:"icons/icon-192.png",revision:"73d414f6a384ed8ced714e14b733ecb4"},{url:"icons/apple-touch-icon.png",revision:"9de7914af7e68807bd315149ab87f6fd"},{url:"assets/index-CkWiJpOd.css",revision:null},{url:"assets/index-BLSvq8xT.js",revision:null},{url:"favicon.png",revision:"65e6543982551f9805ba430588eb9926"},{url:"icons/apple-touch-icon.png",revision:"9de7914af7e68807bd315149ab87f6fd"},{url:"icons/icon-192.png",revision:"73d414f6a384ed8ced714e14b733ecb4"},{url:"icons/icon-512.png",revision:"6c2ca616dd6995628032334e355cedc0"},{url:"icons/maskable-512.png",revision:"6c2ca616dd6995628032334e355cedc0"},{url:"manifest.webmanifest",revision:"75104ae62fb06fd5033c216023f82e0f"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html")))});
+self.addEventListener("install", () => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const windows = await self.clients.matchAll({ type: "window" });
+      await Promise.all(
+        windows.map((client) => {
+          const next = new URL("/", self.location.origin);
+          return client.navigate(next.href);
+        }),
+      );
+      await self.registration.unregister();
+    })(),
+  );
+});

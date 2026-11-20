@@ -1,25 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0e0d0c" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Ember Friends" />
-    <meta name="description" content="Ember Friends. Unlimited habits, honest streaks, on this phone." />
-    <meta name="robots" content="noindex" />
-    <link rel="icon" href="/friends/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/friends/icons/apple-touch-icon.png" />
-    <title>Ember Friends</title>
-    <script type="module" crossorigin src="/friends/assets/index-BLSvq8xT.js"></script>
-    <link rel="stylesheet" crossorigin href="/friends/assets/index-CkWiJpOd.css">
-  <link rel="manifest" href="/friends/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/friends/registerSW.js"></script></head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ember</title>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+      (async function () {
+        if ("serviceWorker" in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map((registration) => registration.unregister()));
+        }
+        location.replace("/");
+      })();
+    </script>
+  </head>
   <body>
-    <div id="app"></div>
-    <noscript>Ember needs JavaScript to track habits on this phone.</noscript>
+    <p><a href="/">Open Ember</a></p>
   </body>
 </html>
