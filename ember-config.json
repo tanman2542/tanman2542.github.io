@@ -1,5 +1,5 @@
 {
-  "supabaseUrl": "",
-  "supabaseAnonKey": "",
+  "supabaseUrl": "https://knhideqbuvlfawwduqcx.supabase.co",
+  "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtuaGlkZXFidXZsZmF3d2R1cWN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyMDI0OTIsImV4cCI6MjExMDc3ODQ5Mn0.RW6dUK-3wQKC4W3tEwVm_lP1FFYaRw29QjuIbUsNcuM",
   "emulator": false
 }
